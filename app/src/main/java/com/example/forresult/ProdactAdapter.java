@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public class ProdactAdapter extends RecyclerView.Adapter<ProdactAdapter.ProductViewHolder> {
 
     private boolean checkBoxLayout;
-    private ArrayList<String> products;
+    private String[] products;
 
-    public ProdactAdapter(boolean checkBoxLayout, ArrayList<String> products) {
+    public ProdactAdapter(boolean checkBoxLayout, String[] products) {
         this.checkBoxLayout = checkBoxLayout;
         this.products = products;
     }
@@ -46,16 +46,16 @@ public class ProdactAdapter extends RecyclerView.Adapter<ProdactAdapter.ProductV
         ProductListHolder productListHolder;
         if(checkBoxLayout) {
             productCheckHolder = (ProductCheckList) holder;
-            productCheckHolder.checkBox.setText(products.get(position));
+            productCheckHolder.checkBox.setText(products[position]);
         } else {
             productListHolder = (ProductListHolder) holder;
-            productListHolder.tv.setText(products.get(position));
+            productListHolder.tv.setText(products[position]);
         }
     }
 
     @Override
     public int getItemCount() {
-        return products.size();
+        return products.length;
     }
     public abstract class ProductViewHolder extends RecyclerView.ViewHolder {
         public ProductViewHolder(@NonNull View itemView) {

@@ -1,5 +1,7 @@
 package com.example.forresult;
 
+import java.util.HashMap;
+
 public class DataManager {
 
     private static boolean milk;
@@ -8,43 +10,13 @@ public class DataManager {
     private static boolean flour;
     private static boolean soap;
 
-    public static boolean isMilk() {
-        return milk;
-    }
-
-    public static void setMilk(boolean milk) {
-        DataManager.milk = milk;
-    }
-
-    public static boolean isBread() {
-        return bread;
-    }
-
-    public static void setBread(boolean bread) {
-        DataManager.bread = bread;
-    }
-
-    public static boolean isOil() {
-        return oil;
-    }
-
-    public static void setOil(boolean oil) {
-        DataManager.oil = oil;
-    }
-
-    public static boolean isFlour() {
-        return flour;
-    }
-
-    public static void setFlour(boolean flour) {
-        DataManager.flour = flour;
-    }
-
-    public static boolean isSoap() {
-        return soap;
-    }
-
-    public static void setSoap(boolean soap) {
-        DataManager.soap = soap;
+    public static HashMap<String, Boolean> getProductMap() {
+        HashMap<String, Boolean> productMap = new HashMap<>();
+        productMap.put("Milk" , milk);
+        productMap.put("Bread" , bread);
+        productMap.put("Oil", oil);
+        productMap.put("Flour", flour);
+        productMap.put("Soap", soap);
+        return productMap;
     }
 }
