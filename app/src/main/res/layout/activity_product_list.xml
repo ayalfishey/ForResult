@@ -20,7 +20,7 @@
         android:id="@+id/button"
         android:layout_width="fill_parent"
         android:layout_height="100dp"
-        android:text="Button"
+        android:text="Finish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

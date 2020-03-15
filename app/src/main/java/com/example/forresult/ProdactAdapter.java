@@ -1,9 +1,11 @@
 package com.example.forresult;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,15 +43,25 @@ public class ProdactAdapter extends RecyclerView.Adapter<ProdactAdapter.ProductV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductViewHolder holder, final int position) {
         ProductCheckList productCheckHolder;
         ProductListHolder productListHolder;
         if(checkBoxLayout) {
             productCheckHolder = (ProductCheckList) holder;
             productCheckHolder.checkBox.setText(products[position]);
+            productCheckHolder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    DataManager.setMapVal(products[position], isChecked);
+                }
+            });
         } else {
             productListHolder = (ProductListHolder) holder;
             productListHolder.tv.setText(products[position]);
+            if(!DataManager.getProductMap().get(products[position]))
+                ((ProductListHolder) holder).tv.setVisibility(View.INVISIBLE);
+            else
+                ((ProductListHolder) holder).tv.setVisibility(View.VISIBLE);
         }
     }
 
